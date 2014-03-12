@@ -12,7 +12,7 @@
     http://commonsware.com/AdvAndroid
 */
 
-package com.commonsware.android.geoweb2;
+package com.commonsware.android.intelchecker;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -33,7 +33,9 @@ import android.webkit.WebViewClient;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-public class GeoWebTwo extends Activity {
+import com.commonsware.android.geoweb2.R;
+
+public class WebViewActivity extends Activity {
   private static String PROVIDER="gps";
   private WebView browser;
   private LocationManager myLocationManager=null;
