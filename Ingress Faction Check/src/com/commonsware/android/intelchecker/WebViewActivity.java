@@ -41,7 +41,7 @@ public class WebViewActivity extends Activity {
   private LocationManager myLocationManager=null;
   private boolean isFirst = true;
   
-  @SuppressLint("NewApi")
+@SuppressLint("NewApi")
 @Override
   public void onCreate(Bundle icicle) {
     super.onCreate(icicle);
@@ -59,7 +59,7 @@ public class WebViewActivity extends Activity {
     	   public void onPageFinished(WebView view, String url) {
     		   if(isFirst) {
     			  // view.loadUrl(getJsFromAsset("intel-inj.js"));
-    			   isFirst = false;
+    			   isFirst = false; //work around, onPageFinished gets called when view.loadUrl is done.
     		   }
     	    }
     	});
