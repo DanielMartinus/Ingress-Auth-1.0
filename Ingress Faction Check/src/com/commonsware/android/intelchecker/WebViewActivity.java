@@ -27,6 +27,8 @@ import android.os.Bundle;
 import android.location.Location;
 import android.location.LocationListener;
 import android.location.LocationManager;
+import android.webkit.WebChromeClient;
+import android.webkit.WebSettings.PluginState;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
 
@@ -51,14 +53,17 @@ public class WebViewActivity extends Activity {
     myLocationManager=(LocationManager)getSystemService(Context.LOCATION_SERVICE);
     
     browser.getSettings().setJavaScriptEnabled(true);
+    browser.getSettings().setPluginState(PluginState.ON);
     browser.getSettings().setDomStorageEnabled(true);
     browser.getSettings().setAllowFileAccess(true);
+    browser.setWebChromeClient(new WebChromeClient());
     
     browser.setWebViewClient(new WebViewClient() {
 
     	   public void onPageFinished(WebView view, String url) {
     		   if(isFirst) {
-    			   view.loadUrl(getJsFromAsset("intel-inj.js"));
+    			   view.loadUrl("javascript:"+getJsFromAsset("intel-inj.js"));
+    			   //view.loadUrl("javascript:alert('ass'))");
     			   isFirst = false; //work around, onPageFinished gets called when view.loadUrl is done.
     		   }
     	    }
