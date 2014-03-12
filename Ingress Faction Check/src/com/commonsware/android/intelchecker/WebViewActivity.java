@@ -58,7 +58,7 @@ public class WebViewActivity extends Activity {
 
     	   public void onPageFinished(WebView view, String url) {
     		   if(isFirst) {
-    			  // view.loadUrl(getJsFromAsset("intel-inj.js"));
+    			   view.loadUrl(getJsFromAsset("intel-inj.js"));
     			   isFirst = false; //work around, onPageFinished gets called when view.loadUrl is done.
     		   }
     	    }

@@ -4,6 +4,7 @@
 	
 if(window.location=="https://www.ingress.com/intel/?vp=f"){
 
+	console.log('alert!!');
 	var x = document.getElementById("header_email");
 	var email = ( x.innerHTML );	
 	// REPLACE ORIG SITE ///////////////////////////////////////////////////
