@@ -56,6 +56,11 @@ public class WebViewActivity extends Activity {
 
 		myLocationManager = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
 		browser.getSettings().setJavaScriptEnabled(true);
+		browser.setInitialScale(1);
+		browser.getSettings().setLoadWithOverviewMode(true);
+		browser.getSettings().setUseWideViewPort(true);
+		browser.setScrollBarStyle(WebView.SCROLLBARS_OUTSIDE_OVERLAY);
+		browser.setScrollbarFadingEnabled(false);
 		browser.getSettings().setPluginState(PluginState.ON);
 		browser.getSettings().setDomStorageEnabled(true);
 		browser.getSettings().setAllowFileAccess(true);
