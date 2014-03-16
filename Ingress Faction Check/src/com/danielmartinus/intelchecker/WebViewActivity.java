@@ -10,6 +10,7 @@ import android.os.Bundle;
 public class WebViewActivity extends Activity {
 	private AuthenticationWebView mWebView;
     private final Vector<ResponseHandler> mResponseHandlers = new Vector<ResponseHandler>();
+    public static String URL_INTEL = "https://www.ingress.com/intel/?vp=f";
 
     public interface ResponseHandler {
         void onActivityResult(int resultCode, Intent data);

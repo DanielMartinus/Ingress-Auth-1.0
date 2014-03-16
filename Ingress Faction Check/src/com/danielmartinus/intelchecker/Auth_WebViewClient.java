@@ -15,8 +15,12 @@ public class Auth_WebViewClient extends WebViewClient {
 	}
 	
 	public void onPageFinished(WebView view, String url) {
-		//load javscript file from assets
-		view.loadUrl("javascript:{" + AssetsFileManager.getJsFromAsset(context, jsFile) + "}");
+		if(url.equals(WebViewActivity.URL_INTEL)) {
+			if(isInjected) return;
+			//load javascript file from assets
+			view.loadUrl("javascript:{" + AssetsFileManager.getJsFromAsset(context, jsFile) + "}");
+			isInjected = true;
+		}
 	}
 	
     /**
