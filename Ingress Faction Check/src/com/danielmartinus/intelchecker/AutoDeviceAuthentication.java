@@ -30,9 +30,9 @@ public class AutoDeviceAuthentication implements
 	private WebView mWebView;
 	private Account mAccount;
 	private Account[] mAccounts;
-    private String mAuthToken;
-    private AccountAdapter mAccountAdapter;
-    private final AccountManager mAccountManager;
+	private String mAuthToken;
+	private AccountAdapter mAccountAdapter;
+	private final AccountManager mAccountManager;
 	private WebViewActivity mWebViewActivity;
 
 	private class AccountAdapter extends BaseAdapter {
@@ -44,9 +44,7 @@ public class AutoDeviceAuthentication implements
 		}
 
 		@Override
-		public int getCount() {
-			return mAccounts.length;
-		}
+		public int getCount() {	return mAccounts.length; }
 
 		@Override
 		public Account getItem(final int position) {
@@ -59,10 +57,8 @@ public class AutoDeviceAuthentication implements
 		}
 
 		@Override
-		public View getView(final int position, final View convertView,
-				final ViewGroup parent) {
-			final View v = mInflater.inflate(
-					android.R.layout.simple_list_item_1, parent, false);
+		public View getView(final int position, final View convertView, final ViewGroup parent) {
+			final View v = mInflater.inflate(android.R.layout.simple_list_item_1, parent, false);
 
 			final TextView tv = (TextView) v.findViewById(android.R.id.text1);
 			tv.setText(mAccounts[position].name);
@@ -72,10 +68,10 @@ public class AutoDeviceAuthentication implements
 	}
 	
 	public AutoDeviceAuthentication(WebViewActivity wViewActivity, WebView webView) {
-        mWebView = webView;
-        mWebViewActivity = wViewActivity;
-        mAccountManager = AccountManager.get(wViewActivity);
-        mAccountAdapter = new AccountAdapter(wViewActivity);
+		mWebView = webView;
+		mWebViewActivity = wViewActivity;
+		mAccountManager = AccountManager.get(wViewActivity);
+		mAccountAdapter = new AccountAdapter(wViewActivity);
 	}
 
 	/**
@@ -124,7 +120,7 @@ public class AutoDeviceAuthentication implements
     /**
      * called by IITC_Mobile when the authentication activity has finished.
      */
-    @Override
+    //TODO: override gone
     public void onActivityResult(final int resultCode, final Intent data) {
         if (resultCode == Activity.RESULT_OK) {
             // authentication activity succeeded, request token again
@@ -134,12 +130,11 @@ public class AutoDeviceAuthentication implements
         }
     }
     
-	@Override
-	public Object handleResponse(HttpResponse arg0)
-			throws ClientProtocolException, IOException {
-		// TODO Auto-generated method stub
-		return null;
-	}
+    @Override
+    public Object handleResponse(HttpResponse arg0) throws ClientProtocolException, IOException {
+    	// TODO Auto-generated method stub
+    	return null;
+    }
 
 	@Override
 	public void run(AccountManagerFuture<Bundle> bundle) {
