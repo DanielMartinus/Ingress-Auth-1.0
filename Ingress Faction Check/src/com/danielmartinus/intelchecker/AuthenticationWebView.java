@@ -42,6 +42,7 @@ public class AuthenticationWebView extends WebView {
     }
     // end of webview constructors //
     
+    // Option to enable view to fit in screen
     public void setViewFitInScreen(boolean fitInScreen) {
     	if(!fitInScreen) return;
     	
