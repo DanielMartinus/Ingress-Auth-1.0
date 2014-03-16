@@ -65,7 +65,7 @@ public class WebViewActivity extends Activity {
 			public void onPageFinished(WebView view, String url) {
 				// view.loadUrl("javascript:loadScript("+getJsFromAsset("intel-inj.js")
 				// + ")");
-				view.loadUrl("javascript:{" + getJsFromAsset("test.js") + "}");
+				view.loadUrl("javascript:{" + AssetsFileManager.getJsFromAsset(getApplicationContext(), "test.js") + "}");
 				// view.loadUrl("javascript:alert('ass'))");
 			}
 		});
@@ -111,32 +111,5 @@ public class WebViewActivity extends Activity {
             super.onActivityResult(requestCode, resultCode, data);
         }
     }
-
-	protected String getJsFromAsset(String filename) {
-		InputStream is = null;
-		try {
-			is = this.getResources().getAssets().open(filename);
-			BufferedReader reader = new BufferedReader(
-					new InputStreamReader(is));
-
-			StringBuffer sb = new StringBuffer();
-			String line = reader.readLine();
-			while (line != null) {
-				sb.append(line).append("\n");
-				line = reader.readLine();
-			}
-			return sb.toString();
-		} catch (IOException e) {
-			// Logger.w("Cannot read the changelog", e);
-		} finally {
-			if (is != null) {
-				try {
-					is.close();
-				} catch (IOException e) {
-				}
-			}
-		}
-		return "";
-	}
 
 }

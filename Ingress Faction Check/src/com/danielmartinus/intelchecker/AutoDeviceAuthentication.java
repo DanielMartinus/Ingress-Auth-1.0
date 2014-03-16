@@ -24,8 +24,7 @@ import android.widget.BaseAdapter;
 import android.widget.TextView;
 import android.widget.Toast;
 
-public class AutoDeviceAuthentication implements
-		AccountManagerCallback<Bundle>, ResponseHandler {
+public class AutoDeviceAuthentication implements AccountManagerCallback<Bundle>, ResponseHandler {
 
 	private WebView mWebView;
 	private Account mAccount;
@@ -144,7 +143,7 @@ public class AutoDeviceAuthentication implements
                 // There is a reason we need to start the given activity if we want an
                 // authentication token. (Could be user confirmation or something else. Whatever,
                 // we have to start it) IITC_Mobile will call it using startActivityForResult
-            	mWebViewActivity.startActivityForResult(launch, this);
+            	//mWebViewActivity.startActivityForResult(launch, this);
                 return;
             }
 
