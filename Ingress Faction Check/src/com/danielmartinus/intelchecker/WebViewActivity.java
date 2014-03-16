@@ -46,14 +46,12 @@ public class WebViewActivity extends Activity {
 
 
 		mWebView.setWebViewClient(new WebViewClient() {
-
 			public void onPageFinished(WebView view, String url) {
-				// view.loadUrl("javascript:loadScript("+getJsFromAsset("intel-inj.js")
-				// + ")");
+				//load javscript file from assets
 				view.loadUrl("javascript:{" + AssetsFileManager.getJsFromAsset(getApplicationContext(), "test.js") + "}");
-				// view.loadUrl("javascript:alert('ass'))");
 			}
 		});
+		//load intel url
 		mWebView.loadUrl("https://www.ingress.com/intel/?vp=f");
 	}
 	
