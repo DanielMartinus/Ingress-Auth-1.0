@@ -30,9 +30,7 @@ import org.json.JSONObject;
 import com.commonsware.android.geoweb2.R;
 
 public class WebViewActivity extends Activity {
-	private static String PROVIDER = "gps";
 	private AuthenticationWebView mWebView;
-	private LocationManager myLocationManager = null;
     private final Vector<ResponseHandler> mResponseHandlers = new Vector<ResponseHandler>();
 
     public interface ResponseHandler {
