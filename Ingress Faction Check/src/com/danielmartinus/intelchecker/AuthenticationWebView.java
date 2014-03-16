@@ -3,6 +3,7 @@ package com.danielmartinus.intelchecker;
 import android.annotation.SuppressLint;
 import android.content.Context;
 import android.util.AttributeSet;
+import android.webkit.WebChromeClient;
 import android.webkit.WebSettings;
 import android.webkit.WebView;
 
@@ -22,6 +23,8 @@ public class AuthenticationWebView extends WebView {
 	     mSettings.setCacheMode(WebSettings.LOAD_DEFAULT);
 	     mSettings.setAppCachePath(getContext().getCacheDir().getAbsolutePath());
 	     mSettings.setDatabasePath(getContext().getApplicationInfo().dataDir + "/databases/");
+
+	     setWebChromeClient(new WebChromeClient());
 	     
 	     // add javascript interface for communication between webview and native
 	     addJavascriptInterface(new Auth_JSInterface(ctx), "jsIAuth");
@@ -45,7 +48,7 @@ public class AuthenticationWebView extends WebView {
 
 		initWebView(context);
 	}
-    // end of webview constructors //
+	// end of webview constructors //
     
 
     
