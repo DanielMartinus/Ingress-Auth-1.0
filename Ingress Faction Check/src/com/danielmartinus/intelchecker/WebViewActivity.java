@@ -51,7 +51,7 @@ public class WebViewActivity extends Activity {
 		browser.getSettings().setDomStorageEnabled(true);
 		browser.getSettings().setAllowFileAccess(true);
 		browser.setWebChromeClient(new WebChromeClient());
-		browser.addJavascriptInterface(new IJavascriptHandler(), "cpjs");
+		browser.addJavascriptInterface(new Auth_JSInterface(this), "cpjs");
 
 		browser.setWebViewClient(new WebViewClient() {
 
@@ -64,19 +64,6 @@ public class WebViewActivity extends Activity {
 		});
 		browser.loadUrl("https://www.ingress.com/intel/?vp=f");
 
-	}
-
-	final class IJavascriptHandler {
-		IJavascriptHandler() {
-		}
-
-		// This annotation is required in Jelly Bean and later:
-		@JavascriptInterface
-		public void sendToAndroid(String text) {
-			// this is called from JS with passed value
-			Toast t = Toast.makeText(getApplicationContext(), text, 2000);
-			t.show();
-		}
 	}
 
 	protected String getJsFromAsset(String filename) {

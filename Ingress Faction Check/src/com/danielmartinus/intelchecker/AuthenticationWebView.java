@@ -23,7 +23,8 @@ public class AuthenticationWebView extends WebView {
 	     mSettings.setAppCachePath(getContext().getCacheDir().getAbsolutePath());
 	     mSettings.setDatabasePath(getContext().getApplicationInfo().dataDir + "/databases/");
 	     
-	     //TODO: add javascript interface
+	     // add javascript interface for communication between webview and native
+		 addJavascriptInterface(new Auth_JSInterface(ctx), "jsIAuth");
 	}
 	
 	// extended webview constructors //
