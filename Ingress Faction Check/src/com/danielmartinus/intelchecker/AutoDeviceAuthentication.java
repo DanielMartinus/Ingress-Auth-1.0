@@ -83,7 +83,7 @@ public class AutoDeviceAuthentication implements AccountManagerCallback<Bundle>,
 		public void onClick(final DialogInterface dialog, final int index) {
 			if (index >= 0 && index < mAccounts.length) {
 				mAccount = mAccounts[index];
-				// startAuthentication();
+				startAuthentication();
 			}
 			dialog.cancel();
 		}
@@ -152,7 +152,7 @@ public class AutoDeviceAuthentication implements AccountManagerCallback<Bundle>,
                 // authentication succeeded, we can load the given url, which will redirect
                 // back to the intel map
                 mWebView.loadUrl(result);
-                mWebViewActivity.loginSucceeded();
+                //mWebViewActivity.loginSucceeded();
             } else {
                 onLoginFailed();
             }
@@ -160,4 +160,27 @@ public class AutoDeviceAuthentication implements AccountManagerCallback<Bundle>,
             onLoginFailed();
         }
 	}
+	
+    /**
+     * start authentication
+     * <p/>
+     * if we already have a username (e.g. because the existing login has timed out), we can directly start
+     * authentication if an account with that username is found.
+     */
+    public void startLogin(final String realm, final String accountName, final String args) {
+        mAccounts = mAccountManager.getAccountsByType(realm);
+        mAccountAdapter.notifyDataSetChanged();
+        mAuthToken = "weblogin:" + args;
+
+        if (mAccounts.length == 0) return;
+
+        for (final Account account : mAccounts) {
+            if (account.name.equals(accountName)) {
+                mAccountManager.getAuthToken(account, mAuthToken, null, mWebViewActivity, this, null);
+                return;
+            }
+        }
+
+        displayAccountList();
+    }
 }
