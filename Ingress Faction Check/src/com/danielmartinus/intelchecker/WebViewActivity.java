@@ -31,9 +31,8 @@ import com.commonsware.android.geoweb2.R;
 
 public class WebViewActivity extends Activity {
 	private static String PROVIDER = "gps";
-	private WebView browser;
+	private AuthenticationWebView mWebView;
 	private LocationManager myLocationManager = null;
-	private boolean isFirst = true;
     private final Vector<ResponseHandler> mResponseHandlers = new Vector<ResponseHandler>();
 
     public interface ResponseHandler {
@@ -45,22 +44,10 @@ public class WebViewActivity extends Activity {
 	public void onCreate(Bundle icicle) {
 		super.onCreate(icicle);
 		setContentView(R.layout.main);
-		browser = (WebView) findViewById(R.id.webkit);
+		mWebView = (AuthenticationWebView) findViewById(R.id.webkit);
 
-		myLocationManager = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
-		browser.getSettings().setJavaScriptEnabled(true);
-		browser.setInitialScale(1);
-		browser.getSettings().setLoadWithOverviewMode(true);
-		browser.getSettings().setUseWideViewPort(true);
-		browser.setScrollBarStyle(WebView.SCROLLBARS_OUTSIDE_OVERLAY);
-		browser.setScrollbarFadingEnabled(false);
-		browser.getSettings().setPluginState(PluginState.ON);
-		browser.getSettings().setDomStorageEnabled(true);
-		browser.getSettings().setAllowFileAccess(true);
-		browser.setWebChromeClient(new WebChromeClient());
-		browser.addJavascriptInterface(new Auth_JSInterface(this), "cpjs");
 
-		browser.setWebViewClient(new WebViewClient() {
+		mWebView.setWebViewClient(new WebViewClient() {
 
 			public void onPageFinished(WebView view, String url) {
 				// view.loadUrl("javascript:loadScript("+getJsFromAsset("intel-inj.js")
@@ -69,8 +56,7 @@ public class WebViewActivity extends Activity {
 				// view.loadUrl("javascript:alert('ass'))");
 			}
 		});
-		browser.loadUrl("https://www.ingress.com/intel/?vp=f");
-
+		mWebView.loadUrl("https://www.ingress.com/intel/?vp=f");
 	}
 	
     /**
