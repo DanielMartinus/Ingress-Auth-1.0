@@ -24,7 +24,7 @@ public class AuthenticationWebView extends WebView {
 	     mSettings.setDatabasePath(getContext().getApplicationInfo().dataDir + "/databases/");
 	     
 	     // add javascript interface for communication between webview and native
-		 addJavascriptInterface(new Auth_JSInterface(ctx), "jsIAuth");
+	     addJavascriptInterface(new Auth_JSInterface(ctx), "jsIAuth");
 	}
 	
 	// extended webview constructors //
@@ -40,7 +40,7 @@ public class AuthenticationWebView extends WebView {
 		initWebView(context);
     }
 
-    public AuthenticationWebView(final Context context, final AttributeSet attrs, final int defStyle) {
+	public AuthenticationWebView(final Context context, final AttributeSet attrs, final int defStyle) {
         super(context, attrs, defStyle);
 
 		initWebView(context);
