@@ -6,9 +6,11 @@ import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.webkit.WebView;
 
 public class WebViewActivity extends Activity {
 	private AuthenticationWebView mWebView;
+	private AutoDeviceAuthentication mAuthentication;
     private final Vector<ResponseHandler> mResponseHandlers = new Vector<ResponseHandler>();
     public static String URL_INTEL = "https://www.ingress.com/intel/?vp=f";
 
@@ -33,6 +35,15 @@ public class WebViewActivity extends Activity {
 //		//load intel url
 		mWebView.loadUrl("https://www.ingress.com/intel/?vp=f");
 	}
+	
+	   /**
+     * called by IITC_WebViewClient when the Google login form is opened.
+     */
+    public void onReceivedLoginRequest(final Auth_WebViewClient client, final WebView view, final String realm,
+            final String account, final String args) {
+    	mAuthentication = new AutoDeviceAuthentication(this, view);
+    	mAuthentication.startLogin(realm, account, args);
+    }
 	
     /**
      * called after successful login

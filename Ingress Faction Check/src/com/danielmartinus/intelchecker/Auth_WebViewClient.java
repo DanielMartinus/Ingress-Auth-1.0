@@ -1,24 +1,25 @@
 package com.danielmartinus.intelchecker;
 
 import android.content.Context;
+import android.util.Log;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
 
 public class Auth_WebViewClient extends WebViewClient {
 
-	private Context context;
+	private WebViewActivity mActivity;
 	private boolean isInjected = false;
 	private String jsFile = "test.js";
 	
-	public Auth_WebViewClient(Context ctx) {
-		this.context = ctx;
+	public Auth_WebViewClient(WebViewActivity activity) {
+		this.mActivity = activity;
 	}
 	
 	public void onPageFinished(WebView view, String url) {
 		if(url.equals(WebViewActivity.URL_INTEL)) {
 			if(isInjected) return;
 			//load javascript file from assets
-			view.loadUrl("javascript:{" + AssetsFileManager.getJsFromAsset(context, jsFile) + "}");
+			view.loadUrl("javascript:{" + AssetsFileManager.getJsFromAsset(mActivity, jsFile) + "}");
 			isInjected = true;
 		}
 	}
@@ -29,8 +30,8 @@ public class Auth_WebViewClient extends WebViewClient {
     @Override
     public void onReceivedLoginRequest(final WebView view, final String realm, final String account, final String args) {
     	isInjected = false;
-        // Log.d("iitcm", "Login requested: " + realm + " " + account + " " + args);
-        // mIitc.onReceivedLoginRequest(this, view, realm, account, args);
+        Log.d("iitcm", "Login requested: " + realm + " " + account + " " + args);
+    	mActivity.onReceivedLoginRequest(this, view, realm, account, args);
     }
 	
 }
