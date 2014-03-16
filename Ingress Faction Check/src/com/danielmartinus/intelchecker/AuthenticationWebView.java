@@ -30,15 +30,20 @@ public class AuthenticationWebView extends WebView {
 	// extended webview constructors //
 	public AuthenticationWebView(Context context) {
 		super(context);
+		
+		initWebView(context);
 	}
 
 	public AuthenticationWebView(final Context context, final AttributeSet attrs) {
         super(context, attrs);
 
+		initWebView(context);
     }
 
     public AuthenticationWebView(final Context context, final AttributeSet attrs, final int defStyle) {
         super(context, attrs, defStyle);
+
+		initWebView(context);
     }
     // end of webview constructors //
     
