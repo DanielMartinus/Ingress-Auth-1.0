@@ -33,7 +33,7 @@ public class WebViewActivity extends Activity {
 	}
 	
 	   /**
-     * called by IITC_WebViewClient when the Google login form is opened.
+     * called by Auth_WebViewClient when the Google login form is opened.
      */
     public void onReceivedLoginRequest(final AuthenticationWebView client, final WebView view, final String realm,
             final String account, final String args) {
