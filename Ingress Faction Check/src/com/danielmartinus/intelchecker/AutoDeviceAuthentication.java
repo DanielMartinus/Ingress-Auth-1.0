@@ -117,7 +117,7 @@ public class AutoDeviceAuthentication implements AccountManagerCallback<Bundle>,
     }
 
     /**
-     * called by IITC_Mobile when the authentication activity has finished.
+     * called when the authentication activity has finished.
      */
     //TODO: override gone
     public void onActivityResult(final int resultCode, final Intent data) {
@@ -140,10 +140,6 @@ public class AutoDeviceAuthentication implements AccountManagerCallback<Bundle>,
         try {
             final Intent launch = (Intent) bundle.getResult().get(AccountManager.KEY_INTENT);
             if (launch != null) {
-                // There is a reason we need to start the given activity if we want an
-                // authentication token. (Could be user confirmation or something else. Whatever,
-                // we have to start it) IITC_Mobile will call it using startActivityForResult
-            	//mWebViewActivity.startActivityForResult(launch, this);
                 return;
             }
 
