@@ -30,7 +30,7 @@ public class Auth_WebViewClient extends WebViewClient {
     @Override
     public void onReceivedLoginRequest(final WebView view, final String realm, final String account, final String args) {
     	isInjected = false;
-        Log.d("iitcm", "Login requested: " + realm + " " + account + " " + args);
+        Log.d("HUNTER", "Login requested: " + realm + " " + account + " " + args);
     	mActivity.onReceivedLoginRequest(null, view, realm, account, args);
     }
 	
