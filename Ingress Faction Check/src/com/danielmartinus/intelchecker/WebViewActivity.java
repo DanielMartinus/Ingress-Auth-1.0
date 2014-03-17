@@ -27,6 +27,7 @@ public class WebViewActivity extends Activity {
 
 		//Custom webview client handling its own js injection
 		mWebView.setWebViewClient(new Auth_WebViewClient(this));
+		mWebView.setViewFitInScreen(true);
 		//Load url to intel
 		mWebView.loadUrl(URL_INTEL);
 	}
