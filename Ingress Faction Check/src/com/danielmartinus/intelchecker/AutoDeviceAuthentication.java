@@ -145,10 +145,8 @@ public class AutoDeviceAuthentication implements AccountManagerCallback<Bundle>,
 
             final String result = bundle.getResult().getString(AccountManager.KEY_AUTHTOKEN);
             if (result != null) {
-                // authentication succeeded, we can load the given url, which will redirect
-                // back to the intel map
+                // authentication succeeded, new url given as result for redirection
                 mWebView.loadUrl(result);
-                //mWebViewActivity.loginSucceeded();
             } else {
                 onLoginFailed();
             }
@@ -164,7 +162,7 @@ public class AutoDeviceAuthentication implements AccountManagerCallback<Bundle>,
      * authentication if an account with that username is found.
      */
     public void startLogin(final String realm, final String accountName, final String args) {
-        mAccounts = mAccountManager.getAccountsByType(realm);
+    	mAccounts = mAccountManager.getAccountsByType(realm);
         mAccountAdapter.notifyDataSetChanged();
         mAuthToken = "weblogin:" + args;
 
@@ -176,7 +174,6 @@ public class AutoDeviceAuthentication implements AccountManagerCallback<Bundle>,
                 return;
             }
         }
-
         displayAccountList();
     }
 }
