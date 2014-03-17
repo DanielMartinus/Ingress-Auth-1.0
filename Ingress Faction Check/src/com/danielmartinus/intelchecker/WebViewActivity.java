@@ -25,15 +25,10 @@ public class WebViewActivity extends Activity {
 		setContentView(R.layout.main);
 		mWebView = (AuthenticationWebView) findViewById(R.id.webkit);
 
+		//Custom webview client handling its own js injection
 		mWebView.setWebViewClient(new Auth_WebViewClient(this));
-//		mWebView.setWebViewClient(new WebViewClient() {
-//			public void onPageFinished(WebView view, String url) {
-//				//load javscript file from assets
-//				view.loadUrl("javascript:{" + AssetsFileManager.getJsFromAsset(getApplicationContext(), "test.js") + "}");
-//			}
-//		});
-//		//load intel url
-		mWebView.loadUrl("https://www.ingress.com/intel/?vp=f");
+		//Load url to intel
+		mWebView.loadUrl(URL_INTEL);
 	}
 	
 	   /**
@@ -45,42 +40,4 @@ public class WebViewActivity extends Activity {
     	mAuthentication.startLogin(realm, account, args);
     }
 	
-    /**
-     * called after successful login
-     */
-//    public void loginSucceeded() {
-//        // garbage collection
-////        mLogin = null;
-////        setLoadingState(true);
-//    }
-//	
-//    public void startActivityForResult(final Intent launch, final ResponseHandler handler) {
-//        int index = mResponseHandlers.indexOf(handler);
-//        if (index == -1) {
-//            mResponseHandlers.add(handler);
-//            index = mResponseHandlers.indexOf(handler);
-//        }
-//
-//        startActivityForResult(launch, RESULT_FIRST_USER + index);
-//    }
-//    
-//    public void deleteResponseHandler(final ResponseHandler handler) {
-//        final int index = mResponseHandlers.indexOf(handler);
-//        if (index != -1) {
-//            // set value to null to enable garbage collection, but don't remove it to keep indexes
-//            mResponseHandlers.set(index, null);
-//        }
-//    }
-//
-//    @Override
-//    protected void onActivityResult(final int requestCode, final int resultCode, final Intent data) {
-//        final int index = requestCode - RESULT_FIRST_USER;
-//
-//        try {
-//            final ResponseHandler handler = mResponseHandlers.get(index);
-//            handler.onActivityResult(resultCode, data);
-//        } catch (final ArrayIndexOutOfBoundsException e) {
-//            super.onActivityResult(requestCode, resultCode, data);
-//        }
-//    }
 }
