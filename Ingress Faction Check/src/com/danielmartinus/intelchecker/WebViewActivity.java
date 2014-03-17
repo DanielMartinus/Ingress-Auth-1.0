@@ -39,9 +39,9 @@ public class WebViewActivity extends Activity {
 	   /**
      * called by IITC_WebViewClient when the Google login form is opened.
      */
-    public void onReceivedLoginRequest(final Auth_WebViewClient client, final WebView view, final String realm,
+    public void onReceivedLoginRequest(final AuthenticationWebView client, final WebView view, final String realm,
             final String account, final String args) {
-    	mAuthentication = new AutoDeviceAuthentication(this, view);
+    	mAuthentication = new AutoDeviceAuthentication(this, mWebView);
     	mAuthentication.startLogin(realm, account, args);
     }
 	
