@@ -28,6 +28,7 @@ public class IntelManager {
 	 */
 	public void onLogin(OnLoginHandler onLoginHandler) {
 		mOnLoginHandler = onLoginHandler;
+		mWebView.setOnLoginHandler(onLoginHandler);
 		mWebView.loadUrl(URL_INTEL);
 	}
 }

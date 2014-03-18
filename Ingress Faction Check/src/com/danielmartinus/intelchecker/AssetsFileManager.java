@@ -6,6 +6,7 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 
 import android.content.Context;
+import android.util.Log;
 
 public class AssetsFileManager {
 	
@@ -24,7 +25,7 @@ public class AssetsFileManager {
 			}
 			return sb.toString();
 		} catch (IOException e) {
-			// Logger.w("Cannot read the changelog", e);
+			 Log.e("HUNTER", "dsf");
 		} finally {
 			if (is != null) {
 				try {

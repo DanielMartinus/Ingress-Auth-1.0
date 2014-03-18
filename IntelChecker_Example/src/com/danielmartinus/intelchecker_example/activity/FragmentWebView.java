@@ -3,10 +3,14 @@ package com.danielmartinus.intelchecker_example.activity;
 import com.danielmartinus.intelchecker.Auth_WebViewClient;
 import com.danielmartinus.intelchecker.AuthenticationWebView;
 import com.danielmartinus.intelchecker.AutoDeviceAuthentication;
+import com.danielmartinus.intelchecker.IntelManager;
+import com.danielmartinus.intelchecker.IntelUser;
+import com.danielmartinus.intelchecker.OnLoginHandler;
 import com.danielmartinus.intelchecker.R;
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -16,6 +20,7 @@ public class FragmentWebView extends Fragment {
 	
 	private AuthenticationWebView mWebView;
 	private AutoDeviceAuthentication mAuthentication;
+	private IntelManager mIntelManager;
 	
 	@Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -23,31 +28,35 @@ public class FragmentWebView extends Fragment {
         View view =  inflater.inflate(R.layout.fragment_webview, container, false);
 
 		mWebView = (AuthenticationWebView) view.findViewById(R.id.webkit);
-		
-		//Custom webview client handling its own js injection
-		mWebView.setWebViewClient(new Auth_WebViewClient(getWebViewActivity()));
+
+		mIntelManager = new IntelManager(getActivity(), mWebView);
 		mWebView.setViewFitInScreen(true);
         return view;
     }
 
 	//Load url to intel
 	public void LoadIntel() {
-		mWebView.loadUrl(WebViewActivity.URL_INTEL);
+		mIntelManager.onLogin(new OnLoginHandler() {
+			
+			@Override
+			public void onLoginSucces(IntelUser user) {
+				Log.e("HUNTER", "RECEIVED: " + user.getAgentName());
+			}
+			
+			@Override
+			public void onLoginNeedAuthentication() {
+				getWebViewActivity().changePage(1);
+			}
+			
+			@Override
+			public void onLoginFailed(String error) {
+				// TODO Auto-generated method stub
+				
+			}
+		});
 	}
 	
 	private WebViewActivity getWebViewActivity() {
 		return (WebViewActivity)getActivity();
 	}
-	
-	 /**
-     * called by Auth_WebViewClient when the Google login form is opened.
-     */
-    public void onReceivedLoginRequest(final AuthenticationWebView client, final WebView view, final String realm,
-            final String account, final String args) {
-//    	mAuthentication = new AutoDeviceAuthentication(getWebViewActivity(), mWebView);
-//    	mAuthentication.startLogin(realm, account, args);
-    	
-    	//TODO: define pages as static position
-    	getWebViewActivity().changePage(1); //Change page to webview for login
-    }
 }

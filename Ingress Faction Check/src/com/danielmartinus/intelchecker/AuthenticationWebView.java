@@ -11,6 +11,8 @@ import android.webkit.WebView;
 public class AuthenticationWebView extends WebView {
 
     private WebSettings mSettings;
+    private OnLoginHandler onLogin;
+    private JSInterface mJSInterface;
     
 	private void initWebView(Context ctx) {
 		if(isInEditMode()) return;
@@ -26,8 +28,14 @@ public class AuthenticationWebView extends WebView {
 
 	     setWebChromeClient(new WebChromeClient());
 	     
-	     // add javascript interface for communication between webview and native
-	     addJavascriptInterface(new Auth_JSInterface(ctx), "jsIAuth");
+	     // add javascript interface for communication between webview and native\
+	     mJSInterface = new JSInterface(onLogin);
+	     addJavascriptInterface(mJSInterface, "JSInterface");
+	}
+	
+	public void setOnLoginHandler(OnLoginHandler onLogin) {
+		this.onLogin = onLogin;
+		mJSInterface.setOnLoginHandler(onLogin);
 	}
 	
 	// extended webview constructors //
@@ -49,8 +57,6 @@ public class AuthenticationWebView extends WebView {
 		initWebView(context);
 	}
 	// end of webview constructors //
-    
-
     
     // Option to enable view to fit in screen
     public void setViewFitInScreen(boolean fitInScreen) {

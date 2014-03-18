@@ -1,21 +1,26 @@
 package com.danielmartinus.intelchecker;
 
 import android.content.Context;
+import android.util.Log;
 import android.webkit.JavascriptInterface;
 import android.widget.Toast;
 
-public class Auth_JSInterface {
-
-	private Context context;
+public class JSInterface {
 	
-	Auth_JSInterface(Context ctx) {
-		this.context = ctx;
+	OnLoginHandler onLogin;
+	
+	JSInterface(OnLoginHandler onLogin) {
+		this.onLogin = onLogin;
 	}
-		
+	
+	public void setOnLoginHandler(OnLoginHandler onLogin) {
+		this.onLogin = onLogin;
+	}
+
 	@JavascriptInterface
-	public void sendToAndroid(String text) {
-		Toast t = Toast.makeText(context, text, 2000);
-		t.show();
+	public void sendToAndroid(String agentName, String faction, String email, String ap, String energy, String invites) {
+		IntelUser user = new IntelUser(agentName, faction, email, ap, energy, invites);
+		if(onLogin != null) { onLogin.onLoginSucces(user); }
 	}
 	
 	//More javascript methods between webview and native here...	
