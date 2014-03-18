@@ -2,8 +2,8 @@ package com.danielmartinus.intelchecker_example.adapter;
 
 import java.util.HashMap;
 
-import com.danielmartinus.activity.FragmentLogin;
-import com.danielmartinus.activity.FragmentWebView;
+import com.danielmartinus.intelchecker_example.activity.FragmentLogin;
+import com.danielmartinus.intelchecker_example.activity.FragmentWebView;
 
 import android.content.Context;
 import android.support.v4.app.Fragment;

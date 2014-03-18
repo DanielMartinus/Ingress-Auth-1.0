@@ -2,11 +2,8 @@ package com.danielmartinus.intelchecker_example.activity;
 
 import java.util.Vector;
 
-import com.danielmartinus.adapter.ViewPagerAdapter;
-import com.danielmartinus.intelchecker.Auth_WebViewClient;
-import com.danielmartinus.intelchecker.AuthenticationWebView;
-import com.danielmartinus.intelchecker.AutoDeviceAuthentication;
 import com.danielmartinus.intelchecker.R;
+import com.danielmartinus.intelchecker_example.adapter.ViewPagerAdapter;
 
 import android.annotation.SuppressLint;
 import android.content.Intent;

@@ -34,7 +34,7 @@ public class AutoDeviceAuthentication implements AccountManagerCallback<Bundle>,
 	private String mAuthToken;
 	private AccountAdapter mAccountAdapter;
 	private final AccountManager mAccountManager;
-	private WebViewActivity mWebViewActivity;
+	private Context mWebViewActivity;
 
 	private class AccountAdapter extends BaseAdapter {
 
@@ -68,11 +68,11 @@ public class AutoDeviceAuthentication implements AccountManagerCallback<Bundle>,
 		}
 	}
 	
-	public AutoDeviceAuthentication(WebViewActivity wViewActivity, WebView webView) {
+	public AutoDeviceAuthentication(Context ctx, WebView webView) {
 		mWebView = webView;
-		mWebViewActivity = wViewActivity;
-		mAccountManager = AccountManager.get(wViewActivity);
-		mAccountAdapter = new AccountAdapter(wViewActivity);
+		mWebViewActivity = ctx;
+		mAccountManager = AccountManager.get(ctx);
+		mAccountAdapter = new AccountAdapter(ctx);
 	}
 
 	/**
