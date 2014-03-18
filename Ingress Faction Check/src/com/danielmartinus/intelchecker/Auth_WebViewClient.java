@@ -1,5 +1,6 @@
 package com.danielmartinus.intelchecker;
 
+import com.danielmartinus.activity.FragmentWebView;
 import com.danielmartinus.activity.WebViewActivity;
 
 import android.content.Context;
@@ -35,7 +36,7 @@ public class Auth_WebViewClient extends WebViewClient {
     public void onReceivedLoginRequest(final WebView view, final String realm, final String account, final String args) {
     	isInjected = false;
         Log.d("HUNTER", "Login requested: " + realm + " " + account + " " + args);
-    	mActivity.onReceivedLoginRequest(null, view, realm, account, args);
+        mActivity.getWebViewFragment().onReceivedLoginRequest(null, view, realm, account, args);
     }
 	
 }
