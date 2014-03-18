@@ -1,8 +1,5 @@
 package com.danielmartinus.intelchecker;
 
-import com.danielmartinus.activity.FragmentWebView;
-import com.danielmartinus.activity.WebViewActivity;
-
 import android.content.Context;
 import android.util.Log;
 import android.webkit.WebView;
@@ -10,21 +7,21 @@ import android.webkit.WebViewClient;
 
 public class Auth_WebViewClient extends WebViewClient {
 
-	private WebViewActivity mActivity;
+	private Context context;
 	private boolean isInjected = false;
 	private String js_user_retrieval = "user-retrieval.js";
 	private String js_redirect_first_page = "redirect-first-page.js";
 	
-	public Auth_WebViewClient(WebViewActivity activity) {
-		this.mActivity = activity;
+	public Auth_WebViewClient(Context ctx) {
+		this.context = ctx;
 	}
 	
 	public void onPageFinished(WebView view, String url) {
-		if(url.equals(WebViewActivity.URL_INTEL)) {
+		if(url.equals(IntelManager.URL_INTEL)) {
 			if(isInjected) return;
 			//load javascript file from assets
-			view.loadUrl("javascript:{" + AssetsFileManager.getJsFromAsset(mActivity, js_redirect_first_page) + "}");
-			view.loadUrl("javascript:{" + AssetsFileManager.getJsFromAsset(mActivity, js_user_retrieval) + "}");
+			view.loadUrl("javascript:{" + AssetsFileManager.getJsFromAsset(context, js_redirect_first_page) + "}");
+			view.loadUrl("javascript:{" + AssetsFileManager.getJsFromAsset(context, js_user_retrieval) + "}");
 			isInjected = true;
 		}
 	}
@@ -36,7 +33,8 @@ public class Auth_WebViewClient extends WebViewClient {
     public void onReceivedLoginRequest(final WebView view, final String realm, final String account, final String args) {
     	isInjected = false;
         Log.d("HUNTER", "Login requested: " + realm + " " + account + " " + args);
-        mActivity.getWebViewFragment().onReceivedLoginRequest(null, view, realm, account, args);
+        //mActivity.getWebViewFragment().onReceivedLoginRequest(null, view, realm, account, args);
+        //TODO: fire listener
     }
 	
 }
