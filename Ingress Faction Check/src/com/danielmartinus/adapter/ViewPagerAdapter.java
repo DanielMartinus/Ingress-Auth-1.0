@@ -29,11 +29,6 @@ public class ViewPagerAdapter extends FragmentPagerAdapter {
 	public int getCount() {
 		return 2;
 	}
-
-	@Override
-	public boolean isViewFromObject(View view, Object object) {
-		return view == object;
-	}
 	
 	public FragmentLogin getLoginFragment() {
 		return fragmentLogin;
