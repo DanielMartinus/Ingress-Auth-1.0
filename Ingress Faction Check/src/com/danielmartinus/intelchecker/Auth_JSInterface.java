@@ -11,8 +11,7 @@ public class Auth_JSInterface {
 	Auth_JSInterface(Context ctx) {
 		this.context = ctx;
 	}
-	
-	
+		
 	@JavascriptInterface
 	public void sendToAndroid(String text) {
 		Toast t = Toast.makeText(context, text, 2000);
