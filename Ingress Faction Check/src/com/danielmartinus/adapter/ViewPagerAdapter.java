@@ -16,6 +16,8 @@ public class ViewPagerAdapter extends FragmentPagerAdapter {
 
 	private Context mContext;
 	private LayoutInflater mInflater;
+	private FragmentLogin fragmentLogin;
+	private FragmentWebView fragmentWebView;
 
 	public ViewPagerAdapter(FragmentManager fm, Context ctx) {
 		super(fm);
@@ -32,14 +34,28 @@ public class ViewPagerAdapter extends FragmentPagerAdapter {
 	public boolean isViewFromObject(View view, Object object) {
 		return view == object;
 	}
+	
+	public FragmentLogin getLoginFragment() {
+		return fragmentLogin;
+	}
+	
+	public FragmentWebView getWebViewFragment() {
+		return fragmentWebView;
+	}
 
 	@Override
 	public Fragment getItem(int page) {
 		switch (page) {
 		case 0:
-			return new FragmentLogin();
+			if(fragmentLogin == null) {
+				fragmentLogin = new FragmentLogin();
+			}
+			return fragmentLogin;
 		case 1:
-			return new FragmentWebView();
+			if(fragmentWebView == null) {
+				fragmentWebView = new FragmentWebView();
+			}
+			return fragmentWebView;
 		}
 		return null;
 	}

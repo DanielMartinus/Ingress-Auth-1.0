@@ -40,6 +40,18 @@ public class WebViewActivity extends FragmentActivity {
 		return mPager;
 	}
 	
+	private ViewPagerAdapter getViewPagerAdapter() {
+		return (ViewPagerAdapter)getViewPager().getAdapter();
+	}
+	
+	public FragmentWebView getWebViewFragment() {
+		return getViewPagerAdapter().getWebViewFragment();
+	}
+	
+	public FragmentLogin getLoginFragment() {
+		return getViewPagerAdapter().getLoginFragment();
+	}
+	
 	public void changePage(int pos) {
 		getViewPager().setCurrentItem(pos);
 	}
