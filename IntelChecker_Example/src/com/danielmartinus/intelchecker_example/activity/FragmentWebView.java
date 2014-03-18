@@ -49,10 +49,7 @@ public class FragmentWebView extends Fragment {
 			}
 			
 			@Override
-			public void onLoginFailed(String error) {
-				// TODO Auto-generated method stub
-				
-			}
+			public void onLoginFailed(String error) {}
 		});
 	}
 	

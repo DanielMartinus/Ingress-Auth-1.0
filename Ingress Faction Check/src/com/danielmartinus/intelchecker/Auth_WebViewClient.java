@@ -11,11 +11,15 @@ public class Auth_WebViewClient extends WebViewClient {
 	private boolean isInjected = false;
 	private String js_user_retrieval = "user-retrieval.js";
 	private String js_redirect_first_page = "redirect-first-page.js";
+
+    private OnLoginHandler onLogin;
 	
-	private OnLoginHandler onLoginHandler;
-	
-	public Auth_WebViewClient(Context ctx, OnLoginHandler onLoginHandler) {
+	public Auth_WebViewClient(Context ctx) {
 		this.context = ctx;
+	}
+	
+	public void setOnLoginHandler(OnLoginHandler onLogin) {
+		this.onLogin = onLogin;
 	}
 	
 	public void onPageFinished(WebView view, String url) {
@@ -35,7 +39,7 @@ public class Auth_WebViewClient extends WebViewClient {
     public void onReceivedLoginRequest(final WebView view, final String realm, final String account, final String args) {
     	isInjected = false;
         Log.d("HUNTER", "Login requested: " + realm + " " + account + " " + args);
-        if(onLoginHandler != null) { onLoginHandler.onLoginNeedAuthentication(); }
+        if(onLogin != null) { onLogin.onLoginNeedAuthentication(); }
         //mActivity.getWebViewFragment().onReceivedLoginRequest(null, view, realm, account, args);
         //TODO: fire listener
     }

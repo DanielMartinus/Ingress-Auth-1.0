@@ -7,6 +7,7 @@ public class IntelManager {
 
 	private Context context;
 	private AuthenticationWebView mWebView;
+	private Auth_WebViewClient mWebClient;
 	private AutoDeviceAuthentication mAuthentication;
 	private OnLoginHandler mOnLoginHandler;
 
@@ -19,7 +20,8 @@ public class IntelManager {
 		if(webview == null) return;
 
 		//Custom webview client handling its own js injection
-		mWebView.setWebViewClient(new Auth_WebViewClient(context, mOnLoginHandler));
+		mWebClient = new Auth_WebViewClient(context);
+		mWebView.setWebViewClient(mWebClient);
 	}
 	
 	/**
@@ -29,6 +31,7 @@ public class IntelManager {
 	public void onLogin(OnLoginHandler onLoginHandler) {
 		mOnLoginHandler = onLoginHandler;
 		mWebView.setOnLoginHandler(onLoginHandler);
+		mWebClient.setOnLoginHandler(onLoginHandler);
 		mWebView.loadUrl(URL_INTEL);
 	}
 }
