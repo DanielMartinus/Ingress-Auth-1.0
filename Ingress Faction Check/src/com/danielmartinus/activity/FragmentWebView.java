@@ -27,10 +27,13 @@ public class FragmentWebView extends Fragment {
 		//Custom webview client handling its own js injection
 		mWebView.setWebViewClient(new Auth_WebViewClient(getWebViewActivity()));
 		mWebView.setViewFitInScreen(true);
-		//Load url to intel
-		mWebView.loadUrl(WebViewActivity.URL_INTEL);
         return view;
     }
+
+	//Load url to intel
+	public void LoadIntel() {
+		mWebView.loadUrl(WebViewActivity.URL_INTEL);
+	}
 	
 	private WebViewActivity getWebViewActivity() {
 		return (WebViewActivity)getActivity();

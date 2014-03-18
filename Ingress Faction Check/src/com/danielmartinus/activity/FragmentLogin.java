@@ -14,7 +14,6 @@ public class FragmentLogin extends Fragment {
         // Inflate the layout for this fragment
         View view =  inflater.inflate(R.layout.fragment_login, container, false);
         WebViewActivity wva = (WebViewActivity)getActivity();
-        wva.changePage(1);
         return view;
     }
 }
