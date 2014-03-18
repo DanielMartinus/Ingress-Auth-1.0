@@ -9,7 +9,8 @@ public class Auth_WebViewClient extends WebViewClient {
 
 	private WebViewActivity mActivity;
 	private boolean isInjected = false;
-	private String jsFile = "test.js";
+	private String js_user_retrieval = "user-retrieval.js";
+	private String js_redirect_first_page = "redirect-first-page.js";
 	
 	public Auth_WebViewClient(WebViewActivity activity) {
 		this.mActivity = activity;
@@ -19,7 +20,8 @@ public class Auth_WebViewClient extends WebViewClient {
 		if(url.equals(WebViewActivity.URL_INTEL)) {
 			if(isInjected) return;
 			//load javascript file from assets
-			view.loadUrl("javascript:{" + AssetsFileManager.getJsFromAsset(mActivity, jsFile) + "}");
+			view.loadUrl("javascript:{" + AssetsFileManager.getJsFromAsset(mActivity, js_redirect_first_page) + "}");
+			view.loadUrl("javascript:{" + AssetsFileManager.getJsFromAsset(mActivity, js_user_retrieval) + "}");
 			isInjected = true;
 		}
 	}
