@@ -17,7 +17,7 @@ public class IntelManager {
 		if(webview == null) return;
 		
 		//Custom webview client handling its own js injection
-		mWebView.setWebViewClient(new Auth_WebViewClient(getWebViewActivity()));
+		mWebView.setWebViewClient(new Auth_WebViewClient(context));
 		mWebView.setViewFitInScreen(true);
 	}
 	
