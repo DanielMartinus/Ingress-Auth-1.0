@@ -1,4 +1,4 @@
-package com.danielmartinus.activity;
+package com.danielmartinus.intelchecker_example.activity;
 
 import java.util.Vector;
 

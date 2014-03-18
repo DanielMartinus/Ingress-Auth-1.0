@@ -1,4 +1,4 @@
-package com.danielmartinus.adapter;
+package com.danielmartinus.intelchecker_example.adapter;
 
 import java.util.HashMap;
 

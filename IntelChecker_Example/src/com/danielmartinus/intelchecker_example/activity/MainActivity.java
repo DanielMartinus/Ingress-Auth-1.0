@@ -1,4 +1,6 @@
-package com.danielmartinus.intelchecker_example;
+package com.danielmartinus.intelchecker_example.activity;
+
+import com.danielmartinus.intelchecker_example.R;
 
 import android.os.Bundle;
 import android.app.Activity;
