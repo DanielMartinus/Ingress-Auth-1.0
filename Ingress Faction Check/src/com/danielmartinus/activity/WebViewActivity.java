@@ -6,16 +6,16 @@ import com.danielmartinus.intelchecker.Auth_WebViewClient;
 import com.danielmartinus.intelchecker.AuthenticationWebView;
 import com.danielmartinus.intelchecker.AutoDeviceAuthentication;
 import com.danielmartinus.intelchecker.R;
-import com.danielmartinus.intelchecker.R.id;
-import com.danielmartinus.intelchecker.R.layout;
 
 import android.annotation.SuppressLint;
-import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.v4.app.FragmentActivity;
+import android.support.v4.view.ViewPager;
 import android.webkit.WebView;
 
-public class WebViewActivity extends Activity {
+public class WebViewActivity extends FragmentActivity {
+	private ViewPager mPager;
 	private AuthenticationWebView mWebView;
 	private AutoDeviceAuthentication mAuthentication;
     private final Vector<ResponseHandler> mResponseHandlers = new Vector<ResponseHandler>();
@@ -27,8 +27,8 @@ public class WebViewActivity extends Activity {
     
 	@SuppressLint("NewApi")
 	@Override
-	public void onCreate(Bundle icicle) {
-		super.onCreate(icicle);
+	protected void onCreate(Bundle savedInstanceState) {
+		super.onCreate(savedInstanceState);
 		setContentView(R.layout.main);
 		mWebView = (AuthenticationWebView) findViewById(R.id.webkit);
 
@@ -39,6 +39,13 @@ public class WebViewActivity extends Activity {
 		mWebView.loadUrl(URL_INTEL);
 	}
 	
+	private ViewPager getViewPager() {
+		if(mPager == null) {
+			this.mPager = (ViewPager)findViewById(R.id.pager);
+		}
+		return mPager;
+	}
+	
 	   /**
      * called by Auth_WebViewClient when the Google login form is opened.
      */
@@ -47,5 +54,4 @@ public class WebViewActivity extends Activity {
     	mAuthentication = new AutoDeviceAuthentication(this, mWebView);
     	mAuthentication.startLogin(realm, account, args);
     }
-	
 }
