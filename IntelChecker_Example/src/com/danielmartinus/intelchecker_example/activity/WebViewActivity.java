@@ -27,6 +27,7 @@ public class WebViewActivity extends FragmentActivity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.main);
+		AuthenticationWebView wbl
 		getViewPager().setAdapter(new ViewPagerAdapter(this.getSupportFragmentManager(), this));
 	}
 	
