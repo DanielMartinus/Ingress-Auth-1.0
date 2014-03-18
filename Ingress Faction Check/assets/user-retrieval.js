@@ -1,5 +1,5 @@
 if (window.location == "https://www.ingress.com/intel/?vp=f") {
-
+	
 	var x = document.getElementById("header_email");
 	var email = (x.innerHTML);
 
@@ -38,9 +38,13 @@ if (window.location == "https://www.ingress.com/intel/?vp=f") {
 
 	var agent = window.PLAYER.nickname;
 	var team = window.PLAYER.team;
-	androidResponse(agent, team);void(0);
+	var email = document.getElementById('header_email').innerHTML;
+	var ap = window.PLAYER.ap;
+	var energy = window.PLAYER.energy;
+	var invites = window.PLAYER.available_invites;
+	androidResponse(agent, team, email, ap, energy, invites);void(0);
 }
 
-function androidResponse(agent, team) {
-	window.cpjs.sendToAndroid("agent: " + agent  + " faction: " + team);
+function androidResponse(agent, faction, email, ap, energy, invites) {
+	window.JSInterface.sendToAndroid(agent, faction, email, ap, energy, invites);
 }
