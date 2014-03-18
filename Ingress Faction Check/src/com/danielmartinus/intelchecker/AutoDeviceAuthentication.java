@@ -6,8 +6,6 @@ import org.apache.http.HttpResponse;
 import org.apache.http.client.ClientProtocolException;
 import org.apache.http.client.ResponseHandler;
 
-import com.danielmartinus.activity.WebViewActivity;
-
 import android.accounts.Account;
 import android.accounts.AccountManager;
 import android.accounts.AccountManagerCallback;
@@ -34,7 +32,7 @@ public class AutoDeviceAuthentication implements AccountManagerCallback<Bundle>,
 	private String mAuthToken;
 	private AccountAdapter mAccountAdapter;
 	private final AccountManager mAccountManager;
-	private Context mWebViewActivity;
+	private Activity mWebViewActivity;
 
 	private class AccountAdapter extends BaseAdapter {
 
@@ -68,11 +66,11 @@ public class AutoDeviceAuthentication implements AccountManagerCallback<Bundle>,
 		}
 	}
 	
-	public AutoDeviceAuthentication(Context ctx, WebView webView) {
+	public AutoDeviceAuthentication(Activity activity, WebView webView) {
 		mWebView = webView;
-		mWebViewActivity = ctx;
-		mAccountManager = AccountManager.get(ctx);
-		mAccountAdapter = new AccountAdapter(ctx);
+		mWebViewActivity = activity;
+		mAccountManager = AccountManager.get(activity);
+		mAccountAdapter = new AccountAdapter(activity);
 	}
 
 	/**
