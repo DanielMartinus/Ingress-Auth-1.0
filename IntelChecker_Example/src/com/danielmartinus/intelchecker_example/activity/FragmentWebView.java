@@ -1,5 +1,8 @@
 package com.danielmartinus.intelchecker_example.activity;
 
+import com.danielmartinus.intelchecker.Auth_WebViewClient;
+import com.danielmartinus.intelchecker.AuthenticationWebView;
+import com.danielmartinus.intelchecker.AutoDeviceAuthentication;
 import com.danielmartinus.intelchecker.R;
 
 import android.os.Bundle;

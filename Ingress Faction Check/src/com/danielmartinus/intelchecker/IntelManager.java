@@ -18,7 +18,13 @@ public class IntelManager {
 		
 		//Custom webview client handling its own js injection
 		mWebView.setWebViewClient(new Auth_WebViewClient(context));
-		mWebView.setViewFitInScreen(true);
 	}
 	
+	/**
+	 * Method to login to the intel
+	 * Returns account information 
+	 */
+	public void onLogin(/*onLoginListener*/) {
+		
+	}
 }

@@ -16,7 +16,6 @@ public class WebViewActivity extends FragmentActivity {
 	
 	private ViewPager mPager;
     
-    public static String URL_INTEL = "https://www.ingress.com/intel/?vp=f";
 
     public interface ResponseHandler {
         void onActivityResult(int resultCode, Intent data);
@@ -27,7 +26,6 @@ public class WebViewActivity extends FragmentActivity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.main);
-		AuthenticationWebView wbl
 		getViewPager().setAdapter(new ViewPagerAdapter(this.getSupportFragmentManager(), this));
 	}
 	
