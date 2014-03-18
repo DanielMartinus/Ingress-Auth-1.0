@@ -16,10 +16,9 @@ import android.support.v4.view.ViewPager;
 import android.webkit.WebView;
 
 public class WebViewActivity extends FragmentActivity {
+	
 	private ViewPager mPager;
-	private AuthenticationWebView mWebView;
-	private AutoDeviceAuthentication mAuthentication;
-    private final Vector<ResponseHandler> mResponseHandlers = new Vector<ResponseHandler>();
+    
     public static String URL_INTEL = "https://www.ingress.com/intel/?vp=f";
 
     public interface ResponseHandler {
@@ -31,14 +30,7 @@ public class WebViewActivity extends FragmentActivity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.main);
-		mWebView = (AuthenticationWebView) findViewById(R.id.webkit);
 		getViewPager().setAdapter(new ViewPagerAdapter(this.getSupportFragmentManager(), this));
-		
-		//Custom webview client handling its own js injection
-		mWebView.setWebViewClient(new Auth_WebViewClient(this));
-		mWebView.setViewFitInScreen(true);
-		//Load url to intel
-		mWebView.loadUrl(URL_INTEL);
 	}
 	
 	private ViewPager getViewPager() {
@@ -48,12 +40,7 @@ public class WebViewActivity extends FragmentActivity {
 		return mPager;
 	}
 	
-	   /**
-     * called by Auth_WebViewClient when the Google login form is opened.
-     */
-    public void onReceivedLoginRequest(final AuthenticationWebView client, final WebView view, final String realm,
-            final String account, final String args) {
-    	mAuthentication = new AutoDeviceAuthentication(this, mWebView);
-    	mAuthentication.startLogin(realm, account, args);
-    }
+	public void changePage(int pos) {
+		getViewPager().setCurrentItem(pos);
+	}
 }

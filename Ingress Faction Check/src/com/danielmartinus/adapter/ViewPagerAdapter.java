@@ -23,10 +23,6 @@ public class ViewPagerAdapter extends FragmentPagerAdapter {
 		this.mInflater = (LayoutInflater) ctx.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
 	}
 
-	private static int sLoginFragment = 0;
-	private static int sWegViewFragment = 1;
-	private HashMap<Integer, Object> views = new HashMap<Integer, Object>();
-
 	@Override
 	public int getCount() {
 		return 2;
