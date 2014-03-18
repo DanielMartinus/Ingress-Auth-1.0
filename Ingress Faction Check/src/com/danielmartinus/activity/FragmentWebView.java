@@ -44,7 +44,10 @@ public class FragmentWebView extends Fragment {
      */
     public void onReceivedLoginRequest(final AuthenticationWebView client, final WebView view, final String realm,
             final String account, final String args) {
-    	mAuthentication = new AutoDeviceAuthentication(getWebViewActivity(), mWebView);
-    	mAuthentication.startLogin(realm, account, args);
+//    	mAuthentication = new AutoDeviceAuthentication(getWebViewActivity(), mWebView);
+//    	mAuthentication.startLogin(realm, account, args);
+    	
+    	//TODO: define pages as static position
+    	getWebViewActivity().changePage(1); //Change page to webview for login
     }
 }
