@@ -1,5 +1,7 @@
 package com.danielmartinus.intelchecker;
 
+import com.danielmartinus.activity.WebViewActivity;
+
 import android.content.Context;
 import android.util.Log;
 import android.webkit.WebView;

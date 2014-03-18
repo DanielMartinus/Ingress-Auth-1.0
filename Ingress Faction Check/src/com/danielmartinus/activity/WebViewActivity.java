@@ -1,6 +1,13 @@
-package com.danielmartinus.intelchecker;
+package com.danielmartinus.activity;
 
 import java.util.Vector;
+
+import com.danielmartinus.intelchecker.Auth_WebViewClient;
+import com.danielmartinus.intelchecker.AuthenticationWebView;
+import com.danielmartinus.intelchecker.AutoDeviceAuthentication;
+import com.danielmartinus.intelchecker.R;
+import com.danielmartinus.intelchecker.R.id;
+import com.danielmartinus.intelchecker.R.layout;
 
 import android.annotation.SuppressLint;
 import android.app.Activity;
