@@ -1,27 +1,51 @@
 package com.danielmartinus.adapter;
 
-import android.support.v4.view.PagerAdapter;
+import java.util.HashMap;
+
+import com.danielmartinus.activity.FragmentLogin;
+import com.danielmartinus.activity.FragmentWebView;
+
+import android.content.Context;
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentPagerAdapter;
+import android.view.LayoutInflater;
 import android.view.View;
 
+public class ViewPagerAdapter extends FragmentPagerAdapter {
 
-public class ViewPagerAdapter extends PagerAdapter {
+	private Context mContext;
+	private LayoutInflater mInflater;
+
+	public ViewPagerAdapter(FragmentManager fm, Context ctx) {
+		super(fm);
+		this.mContext = ctx;
+		this.mInflater = (LayoutInflater) ctx.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+	}
 
 	private static int sLoginFragment = 0;
 	private static int sWegViewFragment = 1;
-	
+	private HashMap<Integer, Object> views = new HashMap<Integer, Object>();
+
 	@Override
 	public int getCount() {
 		return 2;
 	}
 
 	@Override
-	public boolean isViewFromObject(View arg0, Object arg1) {
-		if(getCount() == sLoginFragment) {
-			
-		} else if (getCount() == sWegViewFragment) {
-			
-		}
-		return false;
+	public boolean isViewFromObject(View view, Object object) {
+		return view == object;
 	}
 
+	@Override
+	public Fragment getItem(int page) {
+		switch (page) {
+		case 0:
+			return new FragmentLogin();
+		case 1:
+			return new FragmentWebView();
+		}
+		return null;
+	}
 }
+

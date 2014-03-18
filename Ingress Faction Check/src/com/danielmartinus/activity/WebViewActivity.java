@@ -2,6 +2,7 @@ package com.danielmartinus.activity;
 
 import java.util.Vector;
 
+import com.danielmartinus.adapter.ViewPagerAdapter;
 import com.danielmartinus.intelchecker.Auth_WebViewClient;
 import com.danielmartinus.intelchecker.AuthenticationWebView;
 import com.danielmartinus.intelchecker.AutoDeviceAuthentication;
@@ -31,7 +32,8 @@ public class WebViewActivity extends FragmentActivity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.main);
 		mWebView = (AuthenticationWebView) findViewById(R.id.webkit);
-
+		getViewPager().setAdapter(new ViewPagerAdapter(this.getSupportFragmentManager(), this));
+		
 		//Custom webview client handling its own js injection
 		mWebView.setWebViewClient(new Auth_WebViewClient(this));
 		mWebView.setViewFitInScreen(true);
