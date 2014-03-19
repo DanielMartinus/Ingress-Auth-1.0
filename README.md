@@ -44,3 +44,12 @@ mIntelManager.onLogin(new OnLoginHandler() {
 		}
 });
 ```
+
+<h2>Important</h2>
+
+Before the library will work you need three things to do in your main project.
+**In eclipse**
+1) (right mouse click) Project -> Properties -> Library add (IntelChecker)
+2) (Still in properties) -> Java Build Path -> add (IntelChecker)
+3) (Stil in Java Build Path) -> Delete current Assets folder (save files if you already have files in the assets folder -> Link Source -> Select Assets folder of library -> folder name: "assets"
+_These last steps were important otherwise javascript files won't load in the library and get injected in the webview._
