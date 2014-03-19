@@ -47,7 +47,7 @@ mIntelManager.onLogin(new OnLoginHandler() {
 
 <h2>Important</h2>
 
-Before the library will work you need three things to do in your main project.
+Before the library will work you should follow these three steps:
 **In eclipse** <br/>
 1) (right mouse click) Project -> Properties -> Library add (IntelChecker)<br/>
 2) (Still in properties) -> Java Build Path -> add (IntelChecker)<br/>
