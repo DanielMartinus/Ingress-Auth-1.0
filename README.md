@@ -52,5 +52,6 @@ Before the library will work you should follow these three steps:
 1) (right mouse click) Project -> Properties -> Library add (IntelChecker)<br/>
 2) (Still in properties) -> Java Build Path -> add (IntelChecker)<br/>
 3) (Stil in Java Build Path) -> Delete current Assets folder (save files if you already have files in the assets folder -> Link Source -> Select Assets folder of library -> folder name: "assets"<br/>
+(Move old files from deleted assets folder to library assets folder for example)
 <br/>
 _These last steps were important otherwise javascript files won't load in the library and get injected in the webview._
