@@ -7,7 +7,7 @@ Add the following permission to your manifest
 <uses-permission android:name="android.permission.INTERNET" /> 
 ```
 
-When using auto login via device manager add these two permission along with the **Internet** permission to the manifest:
+When using auto login via Device Accounts add these two permission along with the **Internet** permission to the manifest:
 
 ```Java
 <uses-permission android:name="android.permission.GET_ACCOUNTS" />
