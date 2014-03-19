@@ -23,7 +23,7 @@ AuthenticationWebView webView = (AuthenticationWebView) view.findViewById(R.id.w
 IntelManager intelManager = new IntelManager(getActivity(), mWebView);
 ```
 
-To start the login procedure use the following snipper:
+To start the login procedure use the following snippet:
 
 ```Java
 mIntelManager.onLogin(new OnLoginHandler() {
