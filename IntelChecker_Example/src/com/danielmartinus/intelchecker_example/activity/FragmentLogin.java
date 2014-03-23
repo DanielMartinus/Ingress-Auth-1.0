@@ -1,6 +1,7 @@
 package com.danielmartinus.intelchecker_example.activity;
 
-import com.danielmartinus.intelchecker.R;
+import com.danielmartinus.intelchecker.IntelManager;
+import com.danielmartinus.intelchecker_example.R;
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -15,12 +16,21 @@ public class FragmentLogin extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View view =  inflater.inflate(R.layout.fragment_login, container, false);
-        Button b = (Button)view.findViewById(R.id.button1);
-        b.setOnClickListener(new OnClickListener() {
+        Button btnLogin = (Button)view.findViewById(R.id.btnlogin);
+        btnLogin.setOnClickListener(new OnClickListener() {
 			
 			@Override
 			public void onClick(View v) {
 				getWebViewActivity().getWebViewFragment().LoadIntel();
+			}
+		});
+        
+        Button btnLogout = (Button)view.findViewById(R.id.btnlogout);
+        btnLogout.setOnClickListener(new OnClickListener() {
+			
+			@Override
+			public void onClick(View v) {
+				getWebViewActivity().getWebViewFragment().logout();
 			}
 		});
         return view;

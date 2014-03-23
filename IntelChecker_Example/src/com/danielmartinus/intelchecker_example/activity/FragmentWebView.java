@@ -6,7 +6,7 @@ import com.danielmartinus.intelchecker.AutoDeviceAuthentication;
 import com.danielmartinus.intelchecker.IntelManager;
 import com.danielmartinus.intelchecker.IntelUser;
 import com.danielmartinus.intelchecker.OnLoginHandler;
-import com.danielmartinus.intelchecker.R;
+import com.danielmartinus.intelchecker_example.R;
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -51,6 +51,10 @@ public class FragmentWebView extends Fragment {
 			@Override
 			public void onLoginFailed(String error) {}
 		});
+	}
+	
+	public void logout() {
+		mIntelManager.logout();
 	}
 	
 	private WebViewActivity getWebViewActivity() {
