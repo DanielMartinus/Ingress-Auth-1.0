@@ -10,6 +10,7 @@ import android.util.Log;
 
 public class IntelManager {
 
+	private static String TAG = "IngressAuth";
 	private Context context;
 	private AuthenticationWebView mWebView;
 	private Auth_WebViewClient mWebClient;
@@ -68,8 +69,10 @@ public class IntelManager {
 	            }
 	        }
 	        catch(Exception e) {
-	            Log.e("HUNTER", String.format("Failed to clean the cache, error %s", e.getMessage()));
+	            Log.e(TAG, String.format("Failed to clean the cache, error %s", e.getMessage()));
 	        }
+	    } else {
+	    	Log.e(TAG, "Package name broken or android version lower than 4.4, couldn't delete cache files in folder app_webview.");
 	    }
 	    return deletedFiles;
 	}
@@ -83,6 +86,5 @@ public class IntelManager {
 	    int numDeletedFiles = clearCacheFolder(file, numDays);
 	    context.deleteDatabase("webviewCookiesChromium.db");
 	    context.deleteDatabase("webviewCookiesChromiumPrivate.db");
-	   // Log.i("HUNTER", String.format("Cache pruning completed, %d files deleted", numDeletedFiles));
 	}
 }
