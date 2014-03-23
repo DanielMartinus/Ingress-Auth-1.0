@@ -34,4 +34,8 @@ public class IntelManager {
 		mWebClient.setOnLoginHandler(onLoginHandler);
 		mWebView.loadUrl(URL_INTEL);
 	}
+	
+	public void logout() {
+		mWebView.clearCache(true);
+	}
 }

@@ -1,8 +1,1 @@
-var elements = document.getElementsByClassName("button_link");
-
-for (var i = 0; i < elements.length; i++) {
-	var text = elements[i].innerHTML;
-	if(text == 'Sign in') {
-		elements[i].click();
-	}
-}
+var parent = document.getElementById('dashboard_container'); var element = parent.getElementsByTagName('a')[0].click();

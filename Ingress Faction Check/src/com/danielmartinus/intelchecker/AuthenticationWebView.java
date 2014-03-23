@@ -3,6 +3,7 @@ package com.danielmartinus.intelchecker;
 import android.annotation.SuppressLint;
 import android.content.Context;
 import android.util.AttributeSet;
+import android.view.MotionEvent;
 import android.webkit.WebChromeClient;
 import android.webkit.WebSettings;
 import android.webkit.WebView;
@@ -31,6 +32,20 @@ public class AuthenticationWebView extends WebView {
 	     // add javascript interface for communication between webview and native\
 	     mJSInterface = new JSInterface(onLogin);
 	     addJavascriptInterface(mJSInterface, "JSInterface");
+	}
+	
+	@Override
+	public boolean onTouchEvent(MotionEvent event) {
+
+	    if (event.getAction() == MotionEvent.ACTION_DOWN){
+
+	        int temp_ScrollY = getScrollY();
+	        scrollTo(getScrollX(), getScrollY() + 1);
+	        scrollTo(getScrollX(), temp_ScrollY);
+
+	    }
+
+	    return super.onTouchEvent(event);
 	}
 	
 	public void setOnLoginHandler(OnLoginHandler onLogin) {
