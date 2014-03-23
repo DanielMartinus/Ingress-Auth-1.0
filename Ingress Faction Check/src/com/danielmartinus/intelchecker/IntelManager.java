@@ -79,10 +79,10 @@ public class IntelManager {
 	 * 0 means all files.
 	 */
 	public void clearCache(final Context context, final int numDays) {
-	    Log.i("HUNTER", String.format("Starting cache prune, deleting files older than %d days", numDays));
 	    File file = new File("/data/data/com.danielmartinus.intelchecker_example/app_webview");
 	    int numDeletedFiles = clearCacheFolder(file, numDays);
-	    
-	    Log.i("HUNTER", String.format("Cache pruning completed, %d files deleted", numDeletedFiles));
+	    context.deleteDatabase("webviewCookiesChromium.db");
+	    context.deleteDatabase("webviewCookiesChromiumPrivate.db");
+	   // Log.i("HUNTER", String.format("Cache pruning completed, %d files deleted", numDeletedFiles));
 	}
 }
