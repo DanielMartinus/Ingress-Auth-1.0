@@ -26,7 +26,7 @@ public class Auth_WebViewClient extends WebViewClient {
 		if(url.equals(IntelManager.URL_INTEL)) {
 			if(isInjected) return;
 			//load javascript file from assets
-			view.loadUrl("javascript:{" + AssetsFileManager.getJsFromAsset(context, js_redirect_first_page) + "}");
+			//view.loadUrl("javascript:{" + AssetsFileManager.getJsFromAsset(context, js_redirect_first_page) + "}");
 			view.loadUrl("javascript:{" + AssetsFileManager.getJsFromAsset(context, js_user_retrieval) + "}");
 			isInjected = true;
 		}

@@ -30,7 +30,7 @@ public class AuthenticationWebView extends WebView {
 	     setWebChromeClient(new WebChromeClient());
 	     
 	     // add javascript interface for communication between webview and native\
-	     mJSInterface = new JSInterface(onLogin);
+	     mJSInterface = new JSInterface(onLogin, this);
 	     addJavascriptInterface(mJSInterface, "JSInterface");
 	}
 	
