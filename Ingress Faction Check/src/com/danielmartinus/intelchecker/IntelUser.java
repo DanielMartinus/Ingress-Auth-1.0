@@ -1,6 +1,8 @@
 package com.danielmartinus.intelchecker;
 
-public class IntelUser {
+import java.io.Serializable;
+
+public class IntelUser implements Serializable{
 	
 	private String agentName;
 	private String faction;

@@ -3,13 +3,15 @@ package com.danielmartinus.intelchecker;
 import java.io.File;
 import java.util.Date;
 
+import com.danielmartinus.intelchecker.autodevicelogin.AutoDeviceAuthentication;
+
 import android.app.Activity;
 import android.content.Context;
 import android.text.format.DateUtils;
 import android.util.Log;
 
 public class IntelManager {
-
+	
 	private static String TAG = "IngressAuth";
 	private Context context;
 	private AuthenticationWebView mWebView;
@@ -17,10 +19,14 @@ public class IntelManager {
 	private AutoDeviceAuthentication mAuthentication;
 	private OnLoginHandler mOnLoginHandler;
 
+	public static int ERROR_CODE_NO_RESPONSE= -1;
+	public static int ERROR_CODE_NO_INTERNET = -2;
+	public static int ERROR_CODE_TIMED_OUT = -8;
+	
     public static String URL_INTEL = "https://www.ingress.com/intel/?vp=f";
     
-	public IntelManager(Context ctx, AuthenticationWebView webview) {
-		this.context = ctx;
+	public IntelManager(Activity activity, AuthenticationWebView webview) {
+		this.context = activity;
 		
 		mWebView = webview;
 		if(webview == null) return;
@@ -31,23 +37,33 @@ public class IntelManager {
 	}
 	
 	/**
+	 * Set AutoDeviceAuthentication, let the user choose a device account and login
+	 * via weblogin of google when authentication is required.
+	 * @param activity
+	 */
+	public void setAutoDeviceAuthentication(Activity activity) {
+		if(mWebClient == null) return;
+		mWebClient.setAutoDeviceAuthentication(activity, mWebView); 
+	}
+	
+	/**
 	 * Method to login to the intel
 	 * Returns account information 
 	 */
 	public void onLogin(OnLoginHandler onLoginHandler) {
 		mOnLoginHandler = onLoginHandler;
-		mWebView.setOnLoginHandler(onLoginHandler);
-		mWebClient.setOnLoginHandler(onLoginHandler);
+		mWebView.setOnLoginHandler(mOnLoginHandler);
+		mWebClient.setOnLoginHandler(mOnLoginHandler);
 		mWebView.loadUrl(URL_INTEL);
 	}
 	
-	public void logout() {
-		clearCache(context, 0);
+	public static void logout(Context ctx) {
+		clearCache(ctx, 0);
 	}
 	
 	//helper method for clearCache() , recursive
 	//returns number of deleted files
-	private int clearCacheFolder(final File dir, final int numDays) {
+	private static int clearCacheFolder(final File dir, final int numDays) {
 
 	    int deletedFiles = 0;
 	    if (dir!= null && dir.isDirectory()) {
@@ -81,8 +97,8 @@ public class IntelManager {
 	 * Delete the files older than numDays days from the application cache
 	 * 0 means all files.
 	 */
-	public void clearCache(final Context context, final int numDays) {
-	    File file = new File("/data/data/com.danielmartinus.intelchecker_example/app_webview");
+	private static void clearCache(final Context context, final int numDays) {
+	    File file = new File("/data/data/"+context.getPackageName()+"/app_webview");
 	    int numDeletedFiles = clearCacheFolder(file, numDays);
 	    context.deleteDatabase("webviewCookiesChromium.db");
 	    context.deleteDatabase("webviewCookiesChromiumPrivate.db");

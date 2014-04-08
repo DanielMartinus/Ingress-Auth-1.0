@@ -1,10 +1,8 @@
 package com.danielmartinus.intelchecker;
 
-import android.content.Context;
 import android.util.Log;
 import android.webkit.JavascriptInterface;
 import android.webkit.WebView;
-import android.widget.Toast;
 
 public class JSInterface {
 	
@@ -23,13 +21,23 @@ public class JSInterface {
 	@JavascriptInterface
 	public void sendToAndroid(String agentName, String faction, String email, String ap, String energy, String invites) {
 		IntelUser user = new IntelUser(agentName, faction, email, ap, energy, invites);
+
+		try {
+			Thread.sleep(2000);
+		} catch (InterruptedException e) { e.printStackTrace(); }
 		if(onLogin != null) { onLogin.onLoginSucces(user); }
 	}
 	
 	@JavascriptInterface
-	public void loadUrl(String url) {
+	public void loadUrl(final String url) {
 		Log.e("HUNTER", "javascript callback: (loadurl)" + url);
-		webView.loadUrl(url);
+		//webView.loadUrl(url);
+		webView.post(new Runnable() {
+		    @Override
+		    public void run() {
+		    	webView.loadUrl(url);
+		    }
+		});
 	}
 	
 	//More javascript methods between webview and native here...	

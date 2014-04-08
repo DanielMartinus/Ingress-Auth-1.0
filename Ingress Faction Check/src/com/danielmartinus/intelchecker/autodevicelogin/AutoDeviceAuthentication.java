@@ -1,4 +1,4 @@
-package com.danielmartinus.intelchecker;
+package com.danielmartinus.intelchecker.autodevicelogin;
 
 import java.io.IOException;
 

@@ -1,5 +1,6 @@
 package com.danielmartinus.intelchecker;
 
+
 import android.annotation.SuppressLint;
 import android.content.Context;
 import android.util.AttributeSet;

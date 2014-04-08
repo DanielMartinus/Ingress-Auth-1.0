@@ -1,8 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <string name="app_name">IntelChecker_Example</string>
+    <string name="app_name">Ingress auth 1.0</string>
     <string name="action_settings">Settings</string>
-    <string name="hello_world">Hello world!</string>
-
+    <string name="lbl_crouton_msg">Participate acquiring more accurate data</string>
+    
+    <!-- Load Task Indicators -->
+    <string name="lbl_auth_verifying">Verifying...</string>
+    <string name="lbl_auth_user_found">Welcome <br>%s</br></string>
+    <string name="lbl_auth_required">Authentication required</string>
+    <string name="lbl_auth_wrong_faction">RESISTANCE_NOT_FOUND</string>
+    <string name="lbl_auth_slow_connection">Slow internet connection?</string>
+    <string name="lbl_auth_no_connection">No internet connection, tap to try again.</string>
+   
 </resources>

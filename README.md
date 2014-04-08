@@ -1,4 +1,4 @@
-Ingress Auth 1.0
+Ingress-Faction-Check-Android
 =============================
 
 Add the following permission to your manifest

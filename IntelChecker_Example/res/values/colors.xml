@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    
+    <!-- Resistance theme blue -->
+    <color name="blue_light">#25ade3</color> 
+    
+    <!-- grey -->
+    <color name="grey_text_small_light">#d8d9d9</color>
+    <color name="grey_text_header">#898989</color>
+    
+</resources>
