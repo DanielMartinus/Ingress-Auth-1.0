@@ -25,7 +25,6 @@ public class AssetsFileManager {
 			}
 			return sb.toString();
 		} catch (IOException e) {
-			 Log.e("HUNTER", "dsf");
 		} finally {
 			if (is != null) {
 				try {
@@ -36,5 +35,4 @@ public class AssetsFileManager {
 		}
 		return "";
 	}
-	
 }
