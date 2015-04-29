@@ -7,7 +7,6 @@ if (window.location == "https://www.ingress.com/intel/?vp=f") {
 	 	var text = elements[i].innerHTML;
 		//alert('in loop');
 	 	if(text == 'Sign in') {
-			alert('epi?');
 		loadUrl(elements[i].href);
 	 }
 	}
